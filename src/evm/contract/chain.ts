@@ -1,5 +1,6 @@
 import { registry } from "./registry"
 import * as settings from "../../settings"
+import * as utils from "../../utils"
 import { Contract, JsonRpcProvider, Transaction } from "ethers";
 import { BaseContractData } from "./interface";
 
@@ -26,7 +27,23 @@ export async function isFlareNetworkContract(
     address: string
 ): Promise<boolean> {
     let contracts = await getFlareNetworkContracts(network)
-    return contracts.filter(c => c.address === address).length > 0
+    return contracts.find(c => c.address === address) !== undefined
+}
+
+export async function isContract(
+    network: number,
+    address: string
+): Promise<boolean> {
+    let code = await getContractCode(network, address)
+    return !utils.isZeroHex(code)
+}
+
+export async function getContractCode(
+    network: number,
+    address: string
+): Promise<string> {
+    let provider = _getProvider(network)
+    return await provider.getCode(address)
 }
 
 export async function getRawTransaction(
@@ -44,5 +61,5 @@ export async function getRawTransaction(
 }
 
 function _getProvider(network: number): JsonRpcProvider {
-    return new JsonRpcProvider(settings.RPC[network])
+    return new JsonRpcProvider(settings.C_CHAIN_API_RPC[network])
 }
