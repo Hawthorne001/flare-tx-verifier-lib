@@ -319,7 +319,7 @@ async function _getStakeTxData(
     if (tx instanceof pvmSerial.AddPermissionlessValidatorTx || tx instanceof pvmSerial.AddValidatorTx) {
         parameters.push({
             name: "delegationFee",
-            value: tx.shares.value().toString()
+            value: (tx.shares.value() / 1e4).toString()
         })
     }
 
