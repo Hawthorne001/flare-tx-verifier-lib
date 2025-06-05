@@ -224,6 +224,9 @@ async function _tryGetPTxParams(tx: pvmSerial.BaseTx): Promise<TxVerification | 
         } else if (tx._type === TypeSymbols.PvmImportTx) {
             type = txtype.IMPORT_P
             params = await _getImportPTx(tx as pvmSerial.ImportTx, context, warnings)
+        } else if (tx._type === TypeSymbols.PvmBaseTx) {
+            type = txtype.TRANSFER_P
+            params = await _getTransferPTx(tx as pvmSerial.BaseTx, context, warnings)
         } else {
             throw new Error("Unkown P-chain transaction type")
         }
@@ -276,7 +279,7 @@ async function _getStakeTxData(
     let sentAmount = await _getPInputsData(
         context,
         tx.baseTx.inputs,
-        recipients.length == 1 && !recipients[0].includes(",") ? recipients[0] : undefined,
+        recipients.length == 1 && !recipients[0].includes(",") ? [recipients[0]] : undefined,
         undefined,
         warnings
     )
@@ -352,7 +355,7 @@ async function _getExportPTx(
     let utxoSentAmount = await _getPInputsData(
         context,
         tx.baseTx.inputs,
-        exportRecipients.length == 1 && !exportRecipients.includes(",") ? exportRecipients[0] : undefined,
+        exportRecipients.length == 1 && !exportRecipients.includes(",") ? [exportRecipients[0]] : undefined,
         undefined,
         warnings
     )
@@ -382,7 +385,7 @@ async function _getImportPTx(
     let sentAmount = await _getPInputsData(
         context,
         tx.baseTx.inputs,
-        recipients.length == 1 && !recipients[0].includes(",") ? recipients[0] : undefined,
+        recipients.length == 1 && !recipients[0].includes(",") ? [recipients[0]] : undefined,
         context.cBlockchainID.toString(),
         warnings
     )
@@ -390,7 +393,7 @@ async function _getImportPTx(
     let importAmount = await _getPInputsData(
         context,
         tx.ins,
-        recipients.length == 1 && !recipients[0].includes(",") ? recipients[0] : undefined,
+        recipients.length == 1 && !recipients[0].includes(",") ? [recipients[0]] : undefined,
         context.cBlockchainID.toString(),
         warnings
     )
@@ -404,20 +407,53 @@ async function _getImportPTx(
     }
 }
 
+async function _getTransferPTx(
+    tx: pvmSerial.BaseTx,
+    context: Context.Context,
+    warnings: Set<string>
+): Promise<any> {
+    let [recipients, receivedAmounts] = _getPOutputsData(
+        context,
+        tx.baseTx.outputs,
+        warnings
+    )
+
+    let sentAmount = await _getPInputsData(
+        context,
+        tx.baseTx.inputs,
+        recipients.length > 1 && !recipients.some(r => r.includes(",")) ? recipients : undefined,
+        context.pBlockchainID.toString(),
+        warnings
+    )
+
+    let fee = sentAmount - _sumValues(receivedAmounts)
+
+    return {
+        recipients,
+        values: receivedAmounts.map(a => _gweiToWei(a).toString()),
+        fee: _gweiToWei(fee).toString()
+    }
+}
+
 async function _getPInputsData(
     context: Context.Context,
     inputs: Array<TransferableInput>,
-    address: string | undefined,
+    addresses: Array<string> | undefined,
     blockchainId: string | undefined,
     warnings: Set<string>
 ): Promise<bigint> {
-    let utxos = address ? (await _getPUTXOs(context, address, blockchainId)) : new Array<any>()
+    let utxos = new Array<any>()
+    if (addresses) {
+        for (let address of addresses) {
+            utxos = utxos.concat(await _getPUTXOs(context, address, blockchainId))
+        }
+    }
     let sentAmount = BigInt(0)
     for (let input of inputs) {
         let ai = input.input
         sentAmount += ai.amount()
         _checkPAssetId(context, input.assetId.toString(), warnings)
-        if (address) {
+        if (addresses) {
             let txId = input.utxoID.txID.toString()
             let outputIdx = input.utxoID.outputIdx.value()
             if (!utxos.find(u => u.txId === txId && u.outputIdx === outputIdx)) {

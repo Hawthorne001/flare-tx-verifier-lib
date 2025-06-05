@@ -4,6 +4,7 @@ export const EXPORT_C = "exportC"
 export const IMPORT_C = "importC"
 export const EXPORT_P = "exportP"
 export const IMPORT_P = "importP"
+export const TRANSFER_P = "transferP"
 export const ADD_DELEGATOR_P = "addDelegatorP"
 export const ADD_VALIDATOR_P = "addValidatorP"
 
@@ -15,6 +16,7 @@ export function isKnownType(type: string): boolean {
         IMPORT_C,
         EXPORT_P,
         IMPORT_P,
+        TRANSFER_P,
         ADD_DELEGATOR_P,
         ADD_VALIDATOR_P
     ].includes(type)
@@ -40,6 +42,9 @@ export function getDescription(type: string): string {
         case IMPORT_P: {
             return "Import to P-chain"
         }
+        case TRANSFER_P: {
+            return "Funds transfer on P-chain"
+        }
         case ADD_DELEGATOR_P: {
             return "Stake on P-chain"
         }
@@ -47,7 +52,7 @@ export function getDescription(type: string): string {
             return "Add validator on P-chain"
         }
         default: {
-            return "Unkown transaction type"
+            return "Unknown transaction type"
         }
     }
 }
