@@ -495,14 +495,8 @@ async function _checkNodeId(
         txNodeId = tx.validator.nodeId.toString()
     }
 
-    let cresponse = await pvmApi.getCurrentValidators()
-    for (let validator of cresponse.validators) {
-        if (validator.nodeID === txNodeId) {
-            return
-        }
-    }
-    let presponse = await pvmApi.getPendingValidators()
-    for (let validator of presponse.validators) {
+    let response = await pvmApi.getCurrentValidators()
+    for (let validator of response.validators) {
         if (validator.nodeID === txNodeId) {
             return
         }
