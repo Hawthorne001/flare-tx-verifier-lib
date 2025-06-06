@@ -294,10 +294,6 @@ async function _getStakeTxData(
     )
     _compareRecipients(stakeoutRecipients, recipients, warnings)
 
-    if (tx instanceof pvmSerial.AddPermissionlessDelegatorTx || tx instanceof pvmSerial.AddDelegatorTx) {
-        await _checkNodeId(tx, context, warnings)
-    }
-
     let validator: pvmSerial.Validator
     if (tx instanceof pvmSerial.AddPermissionlessDelegatorTx || tx instanceof pvmSerial.AddPermissionlessValidatorTx) {
         _checkSubnetId(tx, warnings)
@@ -415,7 +411,8 @@ async function _getTransferPTx(
     let [recipients, receivedAmounts] = _getPOutputsData(
         context,
         tx.baseTx.outputs,
-        warnings
+        warnings,
+        2
     )
 
     let sentAmount = await _getPInputsData(
@@ -467,7 +464,8 @@ async function _getPInputsData(
 function _getPOutputsData(
     context: Context.Context,
     outputs: Array<TransferableOutput>,
-    warnings: Set<string>
+    warnings: Set<string>,
+    expectedNumOfRecipients?: number
 ): [Array<string>, Array<bigint>] {
     let recipients = new Array<string>()
     let receivedAmounts = new Array<bigint>()
@@ -488,7 +486,7 @@ function _getPOutputsData(
         _checkOutputLockTime(ao.getLocktime(), warnings)
         _checkPAssetId(context, output.assetId.toString(), warnings)
     }
-    if (recipients.length > 1) {
+    if (recipients.length > (expectedNumOfRecipients ?? 1)) {
         warnings.add(warning.MULTIPLE_RECIPIENTS)
     }
     return [recipients, receivedAmounts]
@@ -511,33 +509,6 @@ async function _getPUTXOs(
             outputIdx: u.utxoId.outputIdx.value()
         }
     })
-}
-
-async function _checkNodeId(
-    tx: pvmSerial.AddPermissionlessDelegatorTx | pvmSerial.AddDelegatorTx,
-    context: Context.Context,
-    warnings: Set<string>
-): Promise<void> {
-    let pvmApi = _getPVMApi(context.networkID)
-    if (pvmApi == null) {
-        warnings.add(warning.UNKNOWN_NODEID)
-        return
-    }
-
-    let txNodeId: string
-    if (tx instanceof pvmSerial.AddPermissionlessDelegatorTx) {
-        txNodeId = tx.subnetValidator.validator.nodeId.toString()
-    } else {
-        txNodeId = tx.validator.nodeId.toString()
-    }
-
-    let response = await pvmApi.getCurrentValidators()
-    for (let validator of response.validators) {
-        if (validator.nodeID === txNodeId) {
-            return
-        }
-    }
-    warnings.add(warning.UNKNOWN_NODEID)
 }
 
 function _checkSubnetId(
