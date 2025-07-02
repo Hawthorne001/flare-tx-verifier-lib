@@ -28,8 +28,8 @@ The output of the function `verify` applied to the unsigned transaction will inc
 | Output parameter | Description |
 | :----: | ----- | 
 | network 					      | Network name, e.g. Flare Mainnet. For non-flare networks, chainID is returned. |
-| type 						        | Possible transaction types are "transferC", "contractCallC", "exportC", "importC", "exportP", "importP", "addDelegatorP", "addValidatorP" |
-| description 				    | Description of the transaction type: "Funds transfer on C-chain", "Contract call on C-chain", "Export from C-chain", "Import to C-chain", "Export from P-chain", "Import to P-chain", "Stake on P-chain", "Add validator on P-chain". |                 
+| type 						        | Possible transaction types are "transferC", "contractCallC", "exportC", "importC", "exportP", "importP", "transferP", "addDelegatorP", "addValidatorP" |
+| description 				    | Description of the transaction type: "Funds transfer on C-chain", "Contract call on C-chain", "Export from C-chain", "Import to C-chain", "Export from P-chain", "Import to P-chain", "Funds transfer on P-chain", "Stake on P-chain", "Add validator on P-chain". |
 | recipients  				    | Recipient(s) of funds or the address of the contract called. |
 | values      				    | Amount of funds transferred or staked stated in WEI. |
 | fee         				    | Transfer fee stated (if specified in transaction) stated in WEI.  |              
