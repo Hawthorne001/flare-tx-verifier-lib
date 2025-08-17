@@ -4,7 +4,7 @@ import * as utils from "../utils"
 import * as warning from "../warning"
 import { Transaction } from "ethers";
 import { getContractData, getProxyTarget, isContract, isFlareContract } from "./contract";
-import { TxVerification, TxVerificationParameter } from "../interface";
+import { SafeTxData, TxVerification, TxVerificationParameter } from "../interface";
 
 export async function verify(txHex: string): Promise<TxVerification | null> {
     let tx: Transaction
@@ -21,6 +21,7 @@ export async function verify(txHex: string): Promise<TxVerification | null> {
         let value = _getValue(tx)
         let fee = _getMaxFee(tx)
         let contract = await _getContract(tx, type, isRecipientFlrNetContract, warnings)
+        let safeTxData = await _getSafeTxData(tx.chainId, contract.parameters, warnings)
         let messageToSign = tx.unsignedHash
 
         return {
@@ -31,6 +32,7 @@ export async function verify(txHex: string): Promise<TxVerification | null> {
             values: [value],
             fee,
             ...contract,
+            safeTxData,
             warnings: Array.from(warnings.values()),
             messageToSign
         }
@@ -176,6 +178,47 @@ async function _getContract(
         contractMethod,
         contractMethodABI,
         contractData,
+        isFlareNetworkContract,
+        parameters
+    }
+}
+
+async function _getSafeTxData(
+    chainId: bigint,
+    sourceParameters: Array<TxVerificationParameter>,
+    warnings: Set<string>
+): Promise<SafeTxData | undefined> {
+    if (!sourceParameters) {
+        return undefined
+    }
+    let pto = sourceParameters.find(p => p.name === "to")
+    if (!pto) {
+        return undefined
+    }
+    let pdata = sourceParameters.find(p => p.name === "data")
+    if (!pdata) {
+        return undefined
+    }
+    if (["value", "operation", "safeTxGas", "baseGas", "gasPrice", "gasToken", "refundReceiver"].some(
+        p => sourceParameters.find(x => x.name === p) === undefined)) {
+        return undefined
+    }
+    let to = pto.value
+    let data = pdata.value
+    let tx = Transaction.from({ chainId, to, data })
+    let isRecipientFlrNetContract = await _isRecipientFlrNetContract(tx)
+    let type = await _getType(tx, isRecipientFlrNetContract)
+    let contract = await _getContract(tx, type, isRecipientFlrNetContract, warnings)
+
+    let contractName = contract.contractName
+    let contractMethod = contract.contractMethod
+    let contractMethodABI = contract.contractMethodABI
+    let isFlareNetworkContract = contract.isFlareNetworkContract
+    let parameters = contract.parameters
+    return {
+        contractName,
+        contractMethod,
+        contractMethodABI,
         isFlareNetworkContract,
         parameters
     }

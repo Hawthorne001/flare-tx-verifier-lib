@@ -39,7 +39,8 @@ The output of the function `verify` applied to the unsigned transaction will inc
 | contractData      		  | When calling a C-chain contract, the data field is returned (in hex format). |
 | isFlareNetworkContract 	| When calling a C-chain contract, it returns true/false, depending if the contract was deployed by Flare. |
 | parameters				      | When calling a C-chain contract, the method's parameters are returned. For types "addDelegatorP" and "addValidatorP", additional staking parameters are returned. |
-| warnings					      | Warnings are returned for suspicious data (e.g., "Not official Flare contract"). |
+| safeTxData                | When calling a C-chain contract to execute a safe transaction (i.e., a transaction that is initiated from a Safe smart account), an object containing the decoded data of the safe transaction is returned. If the safe transaction is a contract call, the object contains the following properties (described above): contractName, contractMethod, contractMethodABI, isFlareNetworkContract, parameters. |
+| warnings					      | Warnings are returned for suspicious data (e.g., "Funds will be locked after transfer."). |
 | messageToSign	  			  | Hash sent to the wallet to sign. Useful for confirming P-chain transactions. |
 
 When staking, the returned staking parameters are the following:

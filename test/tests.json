@@ -799,6 +799,26 @@
           "value": "0x0000000000000000000000002c085de8ed404783071367ead5c41e20adf61b000000000000000000000000000000000000000000000000000000000000000000016389ceaeb5d76092647fa76bd9932ba23326148d9c2d94b2f9cf2583388c6dc9168ec49b4d0059f0f1bf61d51ebedebddf24f8f992a9e8684b50766978e1bf9e1c100c19e005d6f4c874ae29664beca9947e3b6eddc480eff4a4733deef7f75f08780b8182ec2f7e872053f82c60e207e79a098b661ddabdde64c461c8164572501b"
         }
       ],
+      "safeTxData": {
+        "contractName": "GnosisSafeProxy",
+        "contractMethod": "swapOwner",
+        "contractMethodABI": "{\"type\":\"function\",\"name\":\"swapOwner\",\"constant\":false,\"payable\":false,\"inputs\":[{\"type\":\"address\",\"name\":\"prevOwner\"},{\"type\":\"address\",\"name\":\"oldOwner\"},{\"type\":\"address\",\"name\":\"newOwner\"}],\"outputs\":[]}",
+        "isFlareNetworkContract": false,
+        "parameters": [
+          {
+            "name": "prevOwner",
+            "value": "0x0000000000000000000000000000000000000001"
+          },
+          {
+            "name": "oldOwner",
+            "value": "0xeB1F1A741f62CCe4F0F55640E7CdF324d70Ff08C"
+          },
+          {
+            "name": "newOwner",
+            "value": "0x371B3954528Ec462351afB423C8f4C653A1aDFF1"
+          }
+        ]
+      },
       "warnings": [
         "The recipient address is a proxy contract. Transaction parameters are decoded based on its speculated implementation."
       ],

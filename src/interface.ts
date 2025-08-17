@@ -11,6 +11,7 @@ export interface TxVerification {
     contractData?: string,
     isFlareNetworkContract?: boolean,
     parameters?: Array<TxVerificationParameter>,
+    safeTxData?: SafeTxData,
     warnings: Array<string>,
     messageToSign: string
 }
@@ -18,4 +19,12 @@ export interface TxVerification {
 export interface TxVerificationParameter {
     name: string,
     value: string
+}
+
+export interface SafeTxData {
+    contractName?: string,
+    contractMethod?: string,
+    contractMethodABI?: string,
+    isFlareNetworkContract?: boolean,
+    parameters?: Array<TxVerificationParameter>
 }
