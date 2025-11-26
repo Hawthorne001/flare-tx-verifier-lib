@@ -89,7 +89,7 @@
       "contractMethod": "claim",
       "contractMethodABI": "{\"type\":\"function\",\"name\":\"claim\",\"constant\":false,\"payable\":false,\"inputs\":[{\"type\":\"address\",\"name\":\"_rewardOwner\"},{\"type\":\"address\",\"name\":\"_recipient\"},{\"type\":\"uint256\",\"name\":\"_rewardEpoch\"},{\"type\":\"bool\",\"name\":\"_wrap\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"_rewardAmount\"}]}",
       "contractData": "0xb2c1219200000000000000000000000076f95a6fce19f21845e56e39cd08e6b39bd5644f00000000000000000000000076f95a6fce19f21845e56e39cd08e6b39bd5644f00000000000000000000000000000000000000000000000000000000000000970000000000000000000000000000000000000000000000000000000000000001",
-      "isFlareNetworkContract": true,
+      "isFlareNetworkContract": false,
       "parameters": [
         {
           "name": "_rewardOwner",
@@ -129,7 +129,7 @@
       "contractMethod": "claimReward",
       "contractMethodABI": "{\"type\":\"function\",\"name\":\"claimReward\",\"constant\":false,\"payable\":false,\"inputs\":[{\"type\":\"address\",\"name\":\"_recipient\"},{\"type\":\"uint256[]\",\"name\":\"_rewardEpochs\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"_rewardAmount\"}]}",
       "contractData": "0xb2af870a000000000000000000000000ac865390316b2c278073ef1268358d9fccd217e00000000000000000000000000000000000000000000000000000000000000040000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000960000000000000000000000000000000000000000000000000000000000000097",
-      "isFlareNetworkContract": true,
+      "isFlareNetworkContract": false,
       "parameters": [
         {
           "name": "_recipient",
@@ -161,7 +161,7 @@
       "contractMethod": "castVote",
       "contractMethodABI": "{\"type\":\"function\",\"name\":\"castVote\",\"constant\":false,\"payable\":false,\"inputs\":[{\"type\":\"uint256\",\"name\":\"_proposalId\"},{\"type\":\"uint8\",\"name\":\"_support\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"\"}]}",
       "contractData": "0x56781388fe8f37ae54ebd6cc0360ad584dce6bedf1f7590cda43efbeaa4c9c8860f645c40000000000000000000000000000000000000000000000000000000000000001",
-      "isFlareNetworkContract": true,
+      "isFlareNetworkContract": false,
       "parameters": [
         {
           "name": "_proposalId",
@@ -193,7 +193,7 @@
       "contractMethod": "propose",
       "contractMethodABI": "{\"type\":\"function\",\"name\":\"propose\",\"constant\":false,\"stateMutability\":\"payable\",\"payable\":true,\"inputs\":[{\"type\":\"string\",\"name\":\"_description\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"_proposalId\"}]}",
       "contractData": "0xaa98df39000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e57b226e616d65223a202241696c616e64466c6172652028436f6c6c7573696f6e29222c202261646472657373223a2022307832633133633631646338363762316537303162656361626632643963366632656564643265353863222c20226465736372697074696f6e223a202253616d6520616c676f726974686d2061732042657374204654534f222c202275726c223a202268747470733a2f2f666f72756d2e666c6172652e6e6574776f726b2f742f70726963696e672d6c696e6b732d6265747765656e2d626573746674736f2d616e642d61696c616e64666c6172652f333832227d000000000000000000000000000000000000000000000000000000",
-      "isFlareNetworkContract": true,
+      "isFlareNetworkContract": false,
       "parameters": [
         {
           "name": "_description",
@@ -221,7 +221,7 @@
       "contractMethod": "propose",
       "contractMethodABI": "{\"type\":\"function\",\"name\":\"propose\",\"constant\":false,\"stateMutability\":\"payable\",\"payable\":true,\"inputs\":[{\"type\":\"string\",\"name\":\"_description\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"_proposalId\"}]}",
       "contractData": "0xaa98df39000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e57b226e616d65223a202241696c616e64466c6172652028436f6c6c7573696f6e29222c202261646472657373223a2022307833613662313138653762333338313430626162306231663534386364373861306437626363616463222c20226465736372697074696f6e223a202253616d6520616c676f726974686d2061732042657374204654534f222c202275726c223a202268747470733a2f2f666f72756d2e666c6172652e6e6574776f726b2f742f70726963696e672d6c696e6b732d6265747765656e2d626573746674736f2d616e642d61696c616e64666c6172652f333832227d000000000000000000000000000000000000000000000000000000",
-      "isFlareNetworkContract": true,
+      "isFlareNetworkContract": false,
       "parameters": [
         {
           "name": "_description",
@@ -249,7 +249,7 @@
       "contractMethod": "switchToProductionMode",
       "contractMethodABI": "{\"type\":\"function\",\"name\":\"switchToProductionMode\",\"constant\":false,\"payable\":false,\"inputs\":[],\"outputs\":[]}",
       "contractData": "0xf5a98383",
-      "isFlareNetworkContract": true,
+      "isFlareNetworkContract": false,
       "parameters": [],
       "warnings": [],
       "messageToSign": "0x956f0abc6b43d6f1b623dd94e741b58720343754367a6596a4b00213bd262edd"
@@ -272,7 +272,7 @@
       "contractMethod": "claim",
       "contractMethodABI": "{\"type\":\"function\",\"name\":\"claim\",\"constant\":false,\"payable\":false,\"inputs\":[{\"type\":\"address\",\"name\":\"_rewardOwner\"},{\"type\":\"address\",\"name\":\"_recipient\"},{\"type\":\"uint256\",\"name\":\"_rewardEpoch\"},{\"type\":\"bool\",\"name\":\"_wrap\"}],\"outputs\":[{\"type\":\"uint256\",\"name\":\"_rewardAmount\"}]}",
       "contractData": "0xb2c12192000000000000000000000000f2e06184c12c7c24d7bbcece01ffdafc31c8381f000000000000000000000000f2e06184c12c7c24d7bbcece01ffdafc31c8381f00000000000000000000000000000000000000000000000000000000000028aa0000000000000000000000000000000000000000000000000000000000000001",
-      "isFlareNetworkContract": true,
+      "isFlareNetworkContract": false,
       "parameters": [
         {
           "name": "_rewardOwner",
@@ -405,6 +405,25 @@
     }
   },
   {
+    "txHex": "0x0000000000110000007200000000000000000000000000000000000000000000000000000000000000000000000158734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd000000070000000005e548ef0000000000000000000000010000000121ecb223daf5bec57c88276a3086c7aeb88035cb000000000000000078db5c30bed04c05ce209179812850bbb3fe6d46d7eef3744d814c0da555247900000001efad0a2519283bd33aa9dbfae2692b2a8bf03a37bced7317e40728d011451fb00000000058734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd000000050000000005f5e1000000000100000000",
+    "txVerification": {
+      "network": "Flare Testnet Coston2",
+      "type": "importP",
+      "description": "Import to P-chain",
+      "recipients": [
+        "costwo1y8ktyg767klv2lygya4rppk846ugqdwthumcth"
+      ],
+      "values": [
+        "98912495000000000"
+      ],
+      "fee": "1087505000000000",
+      "warnings": [
+        "Funds might not be transferred to the signer address."
+      ],
+      "messageToSign": "0x0a6257297fac830595748df744f45198a92895965640d230bee2e686d350b8f1"
+    }
+  },
+  {
     "txHex": "0x0000000000110000007200000000000000000000000000000000000000000000000000000000000000000000000258734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000007000000003b9aca0000000000000000000000000100000001237605140994862f6bd6f3a3740ee6f586bbdaff58734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000007000000003baa0c4000000000000000000000000100000001237605140994862f6bd6f3a3740ee6f586bbdaff000000000000000078db5c30bed04c05ce209179812850bbb3fe6d46d7eef3744d814c0da55524790000000245556340b039c349b522ee920b8dd56733d20a91afe1484b718b72b461b97aae0000000058734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000005000000003baa0c4000000001000000008e9ef3dd68228c7659709282e6ec8c8a81db2dd77251842a8dd900b33016ab9f0000000058734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000005000000003baa0c400000000100000000",
     "txVerification": {
       "network": "Flare Testnet Coston2",
@@ -421,6 +440,23 @@
         "Funds might not be transferred to the signer address."
       ],
       "messageToSign": "0xdc2ad171894e4421166ffa231a20a58c58c23727babe9e6f59b3212c73ae34ca"
+    }
+  },
+  {
+    "txHex": "0x0000000000120000007200000000000000000000000000000000000000000000000000000000000000000000000158734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd000000070000000005d51170000000000000000000000001000000013228208ad949be9a337812e3808a857903239df30000000200bed2d4ba1b9a6471d4520fa59027355a8a61e4e41ea04e446a7b13d22137ea0000000258734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000005000000003a5a5ac0000000010000000015566f01006d514c458936c04b4c1028c0793f508da35b3cacf263b9fd696c5c0000000058734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000005000000003b9aca0000000001000000000000000078db5c30bed04c05ce209179812850bbb3fe6d46d7eef3744d814c0da55524790000000158734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000007000000006fff43c0000000000000000000000001000000013228208ad949be9a337812e3808a857903239df3",
+    "txVerification": {
+      "network": "Flare Testnet Coston2",
+      "type": "exportP",
+      "description": "Export from P-chain",
+      "recipients": [
+        "costwo1xg5zpzkefxlf5vmczt3cpz590ypj880n349dnn"
+      ],
+      "values": [
+        "1879000000000000000"
+      ],
+      "fee": "2150288000000000",
+      "warnings": [],
+      "messageToSign": "0xfaf5696cf73d1dcd976ba3cb10fcaa385c9fb7a7730f42c93ed11e93c51d9f5e"
     }
   },
   {
@@ -457,6 +493,25 @@
       "fee": "307950000000000",
       "warnings": [],
       "messageToSign": "0xf79bfa23a70d874d6b46df7abe41a97d2cf6ee4f7e096458a5f2c7b73be16d09"
+    }
+  },
+  {
+    "txHex": "0x0000000000220000007200000000000000000000000000000000000000000000000000000000000000000000000258734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000007000000000098968000000000000000000000000100000001e82db275bf45d4a1fc48b1b05df9f758b9f10f4058734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000007000000003aed6ae3000000000000000000000001000000013228208ad949be9a337812e3808a857903239df30000000115566f01006d514c458936c04b4c1028c0793f508da35b3cacf263b9fd696c5c0000000058734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000005000000003b9aca00000000010000000000000000",
+    "txVerification": {
+      "network": "Flare Testnet Coston2",
+      "type": "transferP",
+      "description": "Funds transfer on P-chain",
+      "recipients": [
+        "costwo1aqkmyadlgh22rlzgkxc9m70htzulzr6qwa98m3",
+        "costwo1xg5zpzkefxlf5vmczt3cpz590ypj880n349dnn"
+      ],
+      "values": [
+        "10000000000000000",
+        "988637923000000000"
+      ],
+      "fee": "1362077000000000",
+      "warnings": [],
+      "messageToSign": "0x6da06a03e0bd85ea1166598be5061845a96f3ec55af3d330665239c5894edc95"
     }
   },
   {
@@ -499,6 +554,37 @@
         "Multiple recipient addresses."
       ],
       "messageToSign": "0x1b427a27ef0b75bdd94a7746f34224fbd47467a8677b0f02ca26a10c92f06de8"
+    }
+  },
+  {
+    "txHex": "0x00000000001a0000007200000000000000000000000000000000000000000000000000000000000000000000000158734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd000000070000000005b8190b0000000000000000000000010000000121ecb223daf5bec57c88276a3086c7aeb88035cb00000002218888e1cfc80dae4ebca2c9a01037e732867538f271d7666645ee76322ea87e0000000058734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd0000000500002d79883d20000000000100000000ef40610155fd479d77168edf1be8db4170a1da897fca7958ac5ba7cf29659ef20000000058734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd000000050000000005e548ef000000010000000000000000664b4924a25af8be5f07052b2c2e582f7c10a654000000006917a90f00000000692a1e0f00002d79883d200000000000000000000000000000000000000000000000000000000000000000000000000158734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd0000000700002d79883d20000000000000000000000000010000000121ecb223daf5bec57c88276a3086c7aeb88035cb0000000b0000000000000000000000010000000121ecb223daf5bec57c88276a3086c7aeb88035cb",
+    "txVerification": {
+      "network": "Flare Testnet Coston2",
+      "type": "addDelegatorP",
+      "description": "Stake on P-chain",
+      "recipients": [
+        "costwo1y8ktyg767klv2lygya4rppk846ugqdwthumcth"
+      ],
+      "values": [
+        "50000000000000000000000"
+      ],
+      "fee": "2961380000000000",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "value": "NodeID-AKt7WaK6ozEy5K8azKNacZXLzxZ9xFgC7"
+        },
+        {
+          "name": "startTime",
+          "value": "1763158287"
+        },
+        {
+          "name": "endTime",
+          "value": "1764367887"
+        }
+      ],
+      "warnings": [],
+      "messageToSign": "0xe1e347fa2e073f130005380e031f86b8be5f8d6bd9b3eac1b41d7b8ee547c07f"
     }
   },
   {
@@ -596,6 +682,43 @@
         "The transaction type is deprecated and may not be accepted by the network."
       ],
       "messageToSign": "0x1f936eed3578b16b6ea4b59d745516d68452d41bdf19b3c0e7499a2d2a7a01c3"
+    }
+  },
+  {
+    "txHex": "0x0000000000190000007200000000000000000000000000000000000000000000000000000000000000000000000158734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000007000000003b57f6ac00000000000000000000000100000001253a6c90f28b3ab14e3daeb01171526e8e444247000000026bd9f3cb1cacfdf2b75309caf149cb2c51e73b58ea1791136dc690afd7a51f6d0000000058734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd00000005000000003b9aca0000000001000000006bd9f3cb1cacfdf2b75309caf149cb2c51e73b58ea1791136dc690afd7a51f6d0000000158734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd0000000500038d7ea4c68000000000010000000000000000e9ea8507f0f70a47f0a60ab124ed17fe0a5706d50000000069222df700000000697147f700038d7ea4c6800000000000000000000000000000000000000000000000000000000000000000000000001c88e29d5ccb491dfffe42c39174973d5ebe9ec54cc1cf84c2594aa1a36db2bc443c60715b2838e55131e5eed41317a1ce815170240c4838366fdaa22667d3f1ad9b73063b2d15720c5188e7908631459851f2489a0101d77833898fd69d2107ab124ffdae8e147c5410d388b0cd26dd34cea8f52d0bc7be33aa5c2b587c658fd88dc0cca6f2c5e6e8b2901f7870c5f87b0000000158734f94af871c3d131b56131b6fb7a0291eacadd261e69dfb42a9cdf6f7fddd0000000700038d7ea4c6800000000000000000000000000100000001253a6c90f28b3ab14e3daeb01171526e8e4442470000000b00000000000000000000000100000001253a6c90f28b3ab14e3daeb01171526e8e4442470000000b00000000000000000000000100000001253a6c90f28b3ab14e3daeb01171526e8e44424700030d40",
+    "txVerification": {
+      "network": "Flare Testnet Coston2",
+      "type": "addValidatorP",
+      "description": "Add validator on P-chain",
+      "recipients": [
+        "costwo1y5axey8j3vatzn3a46cpzu2jd68ygsj84m5l59"
+      ],
+      "values": [
+        "1000000000000000000000000"
+      ],
+      "fee": "4379476000000000",
+      "parameters": [
+        {
+          "name": "nodeId",
+          "value": "NodeID-NKqPQeBNRT82BSHjFT9hCygtYQQBSBST7"
+        },
+        {
+          "name": "startTime",
+          "value": "1763847671"
+        },
+        {
+          "name": "endTime",
+          "value": "1769031671"
+        },
+        {
+          "name": "delegationFee",
+          "value": "20"
+        }
+      ],
+      "warnings": [
+        "Funds might not be transferred to the signer address."
+      ],
+      "messageToSign": "0x287dac3fd9fc12b27f9d91a7706d692740998016e78bdbe3710afe39bf818d83"
     }
   },
   {
