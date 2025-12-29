@@ -284,7 +284,11 @@ async function _getStakeTxData(
         warnings
     )
 
-    let stakeAmount = tx.stake.reduce((p, c) => { return p += c.amount() }, BigInt(0))
+    let stakeAmount = BigInt(0)
+    for (let output of tx.stake) {
+        stakeAmount += output.amount()
+    }
+    
     let fee = sentAmount - _sumValues(receivedAmounts) - stakeAmount
 
     let [stakeoutRecipients, stakeoutAmounts] = _getPOutputsData(
@@ -434,7 +438,7 @@ async function _getTransferPTx(
 
 async function _getPInputsData(
     context: Context.Context,
-    inputs: Array<TransferableInput>,
+    inputs: ReadonlyArray<TransferableInput>,
     addresses: Array<string> | undefined,
     blockchainId: string | undefined,
     warnings: Set<string>
@@ -463,7 +467,7 @@ async function _getPInputsData(
 
 function _getPOutputsData(
     context: Context.Context,
-    outputs: Array<TransferableOutput>,
+    outputs: ReadonlyArray<TransferableOutput>,
     warnings: Set<string>,
     expectedNumOfRecipients?: number
 ): [Array<string>, Array<bigint>] {

@@ -583,7 +583,9 @@
           "value": "1764367887"
         }
       ],
-      "warnings": [],
+      "warnings": [
+        "Funds might not be transferred to the signer address."
+      ],
       "messageToSign": "0xe1e347fa2e073f130005380e031f86b8be5f8d6bd9b3eac1b41d7b8ee547c07f"
     }
   },
